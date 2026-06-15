@@ -1,0 +1,1577 @@
+/* ==========================================================================
+   CSS DESIGN SYSTEM: SOLID ROMANTIC BLUE PALETTE (NO GRADIENTS)
+   ========================================================================== */
+
+:root {
+  /* Color Tokens (Solid, Tailored) */
+  --bg-color: #EBF1F5;        /* Solid Warm Soft Blue-Grey */
+  --primary: #1D3557;         /* Deep Midnight Navy */
+  --secondary: #457B9D;       /* Slate Dusty Blue */
+  --accent-sky: #A2D2FF;      /* Dreamy Sky Blue */
+  --accent-ice: #BDE0FE;      /* Pale Ice Blue */
+  --accent-pink: #FFAFCC;     /* Romantic Rose Pink */
+  --accent-gold: #E5C158;     /* Soft Gold */
+  
+  /* Electric Blue for Buttons */
+  --btn-electric-blue: #0052FF;
+  --btn-electric-blue-hover: #003CD6;
+  --btn-electric-blue-active: #002AB0;
+  
+  /* Text & Interface Colors */
+  --text-main: #1D3557;
+  --text-muted: #4A5E73;
+  --card-bg: #FFFFFF;         /* Solid White Card */
+  --card-border: #C0C8D0;
+  --shadow-light: 0 8px 24px rgba(29, 53, 87, 0.08);
+  --shadow-medium: 0 12px 36px rgba(29, 53, 87, 0.12);
+  --shadow-dark: 0 16px 48px rgba(29, 53, 87, 0.20);
+  
+  /* Fonts */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Outfit', sans-serif;
+  --font-cursive: 'Caveat', cursive;
+}
+
+/* ==========================================================================
+   BASE STYLING & CORE LAYOUT
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Ambient background stars/hearts/clouds */
+#ambient-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-element {
+  position: absolute;
+  color: var(--accent-sky);
+  opacity: 0.15;
+  animation: floatAmbient 12s infinite ease-in-out;
+}
+
+@keyframes floatAmbient {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-40px) rotate(20deg) scale(1.15);
+  }
+}
+
+/* Main App Wrapper */
+#app-container {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  padding: 20px;
+}
+
+/* ==========================================================================
+   SCREENS ROUTING SYSTEM
+   ========================================================================== */
+
+.screen {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              visibility 0.6s;
+  transform: scale(0.97) translateY(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  position: relative;
+  transform: scale(1) translateY(0);
+}
+
+/* Glassmorphism Card Style - Replaced with Solid Style */
+.glass-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 28px;
+  padding: 40px 30px;
+  box-shadow: var(--shadow-medium);
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: var(--shadow-dark);
+}
+
+/* ==========================================================================
+   BUTTON DESIGN SYSTEM (ELECTRIC BLUE, NO GRADIENTS)
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  border-radius: 50px;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 12px rgba(0, 82, 255, 0.15);
+  outline: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--btn-electric-blue);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-electric-blue-hover);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 82, 255, 0.3);
+}
+
+.btn-primary:active {
+  background-color: var(--btn-electric-blue-active);
+  transform: translateY(-1px) scale(0.98);
+}
+
+.btn-success {
+  background-color: var(--btn-electric-blue);
+  color: #FFFFFF;
+}
+
+.btn-success:hover {
+  background-color: var(--btn-electric-blue-hover);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 82, 255, 0.3);
+}
+
+.btn-success:active {
+  background-color: var(--btn-electric-blue-active);
+}
+
+.btn-danger {
+  background-color: rgba(29, 53, 87, 0.05);
+  border: 1.5px solid rgba(29, 53, 87, 0.15);
+  color: var(--text-muted);
+}
+
+.btn-danger:hover {
+  background-color: rgba(29, 53, 87, 0.1);
+  color: var(--primary);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(69, 123, 157, 0.05);
+  transform: translateY(-3px);
+}
+
+/* Micro-animations */
+.btn-bounce {
+  animation: sutilBounce 2.5s infinite;
+}
+
+@keyframes sutilBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.btn-pulse {
+  animation: pulseButton 2.5s infinite;
+}
+
+@keyframes pulseButton {
+  0% { box-shadow: 0 0 0 0 rgba(0, 82, 255, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(0, 82, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 82, 255, 0); }
+}
+
+/* ==========================================================================
+   SCREEN 1: THE GIFT BOX
+   ========================================================================== */
+
+.gift-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+}
+
+.gift-container {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  perspective: 600px;
+}
+
+/* 3D Gift Box */
+.gift-box-3d {
+  width: 140px;
+  height: 140px;
+  background-color: var(--accent-sky);
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(29, 53, 87, 0.2);
+  cursor: pointer;
+  transition: transform 0.4s ease;
+  transform-style: preserve-3d;
+  animation: floatBox 3s infinite ease-in-out;
+}
+
+.gift-box-3d:hover {
+  transform: scale(1.05) rotateY(10deg);
+}
+
+@keyframes floatBox {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+/* Box Ribbons */
+.gift-ribbon-v, .gift-ribbon-h {
+  position: absolute;
+  background-color: var(--primary);
+  z-index: 2;
+  box-shadow: 0 0 4px rgba(29, 53, 87, 0.1);
+}
+
+.gift-ribbon-v {
+  width: 28px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.gift-ribbon-h {
+  width: 100%;
+  height: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 2px;
+}
+
+/* Box Lid */
+.gift-lid {
+  width: 152px;
+  height: 34px;
+  background-color: var(--accent-ice);
+  position: absolute;
+  top: -12px;
+  left: -6px;
+  z-index: 10;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              opacity 0.8s ease;
+  transform-origin: bottom right;
+}
+
+.gift-lid-ribbon-v {
+  width: 28px;
+  height: 100%;
+  background-color: var(--primary);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gift-lid-bow {
+  width: 60px;
+  height: 30px;
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+}
+
+.bow-left, .bow-right {
+  width: 32px;
+  height: 24px;
+  border: 5px solid var(--primary);
+  border-radius: 50% 50% 0 50%;
+  position: absolute;
+  top: 0;
+  background: transparent;
+}
+
+.bow-left {
+  left: -2px;
+  transform: rotate(-15deg);
+}
+
+.bow-right {
+  right: -2px;
+  transform: rotate(105deg);
+  border-radius: 50% 50% 50% 0;
+}
+
+/* Box Body */
+.gift-body {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Box Open Animation State */
+.gift-box-3d.opened {
+  animation: none;
+  pointer-events: none;
+}
+
+.gift-box-3d.opened .gift-lid {
+  transform: translateY(-120px) rotate(45deg) scale(0.8);
+  opacity: 0;
+}
+
+/* ==========================================================================
+   SCREEN 2: POLAROID MEMORIES
+   ========================================================================== */
+
+#screen-memories {
+  max-width: 800px;
+}
+
+.memories-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* Polaroid Table */
+.polaroid-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 30px 0 40px 0;
+  width: 100%;
+  perspective: 1000px;
+}
+
+.polaroid-card {
+  background: #FFFFFF;
+  padding: 14px 14px 24px 14px;
+  box-shadow: var(--shadow-light);
+  border-radius: 4px;
+  width: 210px;
+  transform: rotate(var(--rotation)) translateY(0);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2), 
+              box-shadow 0.4s ease, 
+              z-index 0.1s;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(29, 53, 87, 0.05);
+}
+
+.polaroid-card:hover {
+  transform: scale(1.1) rotate(0deg) translateY(-15px);
+  box-shadow: var(--shadow-dark);
+  z-index: 10;
+}
+
+.polaroid-image-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #F0F4F8;
+  border: 1px solid rgba(29, 53, 87, 0.05);
+}
+
+.polaroid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.polaroid-card:hover .polaroid-img {
+  transform: scale(1.05);
+}
+
+.polaroid-caption {
+  font-family: var(--font-cursive);
+  font-size: 1.55rem;
+  color: var(--text-main);
+  margin-top: 14px;
+  text-align: center;
+  line-height: 1.25;
+  padding: 0 4px;
+}
+
+.memories-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   SCREEN 3: OFFICIAL ENVELOPE & COLLAPSIBLE RECEIPT STAGE
+   ========================================================================== */
+
+.letter-stage {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.8s ease;
+}
+
+/* Envelope Container */
+.envelope-wrapper {
+  position: relative;
+  width: 340px;
+  height: 220px;
+  margin-bottom: 40px;
+  perspective: 1200px;
+  z-index: 20;
+  transition: opacity 0.8s ease, height 0.8s ease, margin 0.8s ease;
+}
+
+.envelope-wrapper.hidden {
+  opacity: 0;
+  height: 0;
+  margin-bottom: 0;
+  pointer-events: none;
+}
+
+/* Official Business Envelope Layout */
+.envelope-official {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* Sender details on top left */
+.envelope-sender {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 0.65rem;
+  color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.envelope-sender strong {
+  font-weight: 800;
+  font-size: 0.7rem;
+}
+
+/* Official postal stamp top right */
+.envelope-stamp {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 1.5px dashed var(--primary);
+  padding: 4px 8px;
+  font-family: var(--font-sans);
+  color: var(--primary);
+}
+
+.stamp-border {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stamp-text {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.stamp-date {
+  font-size: 0.5rem;
+  margin-top: 1px;
+  font-weight: 600;
+}
+
+/* Recipient details in the middle */
+.envelope-recipient {
+  position: absolute;
+  bottom: 25px;
+  left: 35px;
+  font-family: var(--font-sans);
+  color: var(--primary);
+  border-left: 3.5px solid var(--btn-electric-blue);
+  padding-left: 12px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+}
+
+.recipient-label {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.recipient-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.recipient-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Official Shield Seal Badge */
+.envelope-seal {
+  position: absolute;
+  bottom: 15px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.9;
+}
+
+.seal-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Top Lip/Flap (folds open backward) */
+.envelope-lid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 18px;
+  background-color: #ECEFF1;
+  border-bottom: 1.5px solid var(--primary);
+  transform-origin: top;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 10;
+}
+
+.envelope-wrapper.open .envelope-lid {
+  transform: rotateX(180deg);
+}
+
+.envelope-prompt {
+  position: absolute;
+  bottom: -40px;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.95rem;
+  animation: promptPulse 2s infinite ease-in-out;
+}
+
+@keyframes promptPulse {
+  0%, 100% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* ==========================================================================
+   THE RENEWAL RECEIPT (TICKET)
+   ========================================================================== */
+
+.receipt-paper {
+  position: relative;
+  width: 310px;
+  background-color: #FAF9F6;
+  color: #1D3557;
+  font-family: var(--font-sans);
+  z-index: 2;
+  box-shadow: var(--shadow-light);
+  padding: 24px 18px;
+  opacity: 0;
+  transform: translateY(-220px) scale(0.9);
+  pointer-events: none;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+              opacity 0.6s ease;
+  border-left: 1px dashed rgba(29, 53, 87, 0.15);
+  border-right: 1px dashed rgba(29, 53, 87, 0.15);
+  margin-bottom: 0px;
+}
+
+/* Paper Zig-zag top and bottom */
+.receipt-paper::before, .receipt-paper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-size: 14px 10px;
+  z-index: 5;
+}
+
+.receipt-paper::before {
+  top: -10px;
+  background-image: linear-gradient(135deg, #FAF9F6 25%, transparent 25%), 
+                    linear-gradient(225deg, #FAF9F6 25%, transparent 25%);
+}
+
+.receipt-paper::after {
+  bottom: -10px;
+  background-image: linear-gradient(45deg, #FAF9F6 25%, transparent 25%), 
+                    linear-gradient(315deg, #FAF9F6 25%, transparent 25%);
+}
+
+/* Stage 1: Slide Out of Envelope */
+.receipt-paper.open {
+  opacity: 1;
+  transform: translateY(-340px) scale(1);
+  pointer-events: auto;
+  z-index: 10;
+  box-shadow: var(--shadow-medium);
+}
+
+/* Stage 2: Center into main view (envelope hidden) */
+.receipt-paper.centered {
+  transform: translateY(0) scale(1);
+  margin: 15px auto;
+}
+
+/* Inner Receipt Styling */
+.receipt-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.receipt-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.receipt-divider {
+  font-size: 0.8rem;
+  letter-spacing: -2px;
+  color: var(--secondary);
+  opacity: 0.5;
+  user-select: none;
+}
+
+.receipt-title {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin: 6px 0;
+  color: var(--primary);
+}
+
+.receipt-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dotted rgba(29, 53, 87, 0.1);
+  padding-bottom: 4px;
+}
+
+.detail-row.margin-top {
+  margin-top: 12px;
+  border-bottom: none;
+}
+
+.detail-label {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.detail-value {
+  font-weight: 600;
+  text-align: right;
+}
+
+.detail-value.highlight {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.detail-value.status-badge {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: #27ae60;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.detail-value.highlight-red {
+  color: #e74c3c;
+  font-weight: 800;
+  background-color: rgba(231, 76, 60, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.receipt-section-title {
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 14px;
+  color: var(--secondary);
+  border-bottom: 1.5px solid rgba(29, 53, 87, 0.15);
+  padding-bottom: 2px;
+}
+
+.quote-box {
+  background-color: rgba(69, 123, 157, 0.06);
+  border-left: 3.5px solid var(--secondary);
+  padding: 8px 12px;
+  font-style: italic;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.receipt-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 0.8rem;
+}
+
+/* Recargos columns alignment (Price Left, Text Right) */
+.charges-list li {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+
+.charge-item {
+  font-weight: 800;
+  color: var(--primary);
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.charge-text {
+  text-align: right;
+  color: var(--text-muted);
+  flex-grow: 1;
+}
+
+.benefits-list li {
+  color: var(--text-main);
+  padding-left: 2px;
+}
+
+.text-bold {
+  font-weight: 800;
+}
+
+/* Barcode */
+.barcode-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.barcode {
+  width: 170px;
+  height: 32px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--primary),
+    var(--primary) 2px,
+    transparent 2px,
+    transparent 5px,
+    var(--primary) 5px,
+    var(--primary) 7px,
+    transparent 7px,
+    transparent 9px
+  );
+  opacity: 0.85;
+}
+
+.barcode-number {
+  font-size: 0.65rem;
+  font-family: monospace;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   SCREEN 5: TERMS & CONDITIONS (COLLAPSIBLE BELOW RECEIPT)
+   ========================================================================== */
+
+.terms-container {
+  width: 100%;
+  max-width: 440px;
+  text-align: center;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.8s ease, max-height 0.8s ease, margin-top 0.8s ease;
+  z-index: 20;
+  padding: 0 10px;
+  margin-top: 0;
+}
+
+.terms-container.visible {
+  opacity: 1;
+  max-height: 350px;
+  margin-top: 25px;
+}
+
+.terms-warning {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background-color: rgba(29, 53, 87, 0.05);
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(29, 53, 87, 0.08);
+}
+
+.terms-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  position: relative;
+}
+
+#btn-decline {
+  position: relative;
+  z-index: 10;
+}
+
+#btn-accept {
+  z-index: 10;
+}
+
+/* ==========================================================================
+   SCREEN 6: CELEBRATION (FINAL SCREEN - NO GRADIENTS)
+   ========================================================================== */
+
+.celebration-card {
+  max-width: 540px;
+  padding: 50px 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.success-icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.success-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--btn-electric-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 82, 255, 0.25);
+  animation: scalePop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.2) forwards;
+}
+
+.check-svg {
+  width: 44px;
+  height: 44px;
+}
+
+@keyframes scalePop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+.celebration-title {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 20px;
+  line-height: 1.3;
+  position: relative;
+  z-index: 1;
+}
+
+.celebration-message {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+  font-weight: 400;
+  padding: 0 10px;
+}
+
+.love-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 35px;
+  background-color: rgba(29, 53, 87, 0.04);
+  padding: 12px 24px;
+  border-radius: 16px;
+  border: 1px dashed rgba(29, 53, 87, 0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.counter-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.counter-val {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   PARTICLES & TOASTS STYLING
+   ========================================================================== */
+
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Toast System */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10000;
+  width: 90%;
+  max-width: 380px;
+  pointer-events: none;
+}
+
+.toast {
+  background-color: var(--primary);
+  color: #FFFFFF;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(29, 53, 87, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: toastSlideUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.2) forwards, 
+             toastFadeOut 0.4s ease 3.6s forwards;
+  border-left: 4px solid var(--accent-pink);
+  pointer-events: auto;
+}
+
+@keyframes toastSlideUp {
+  0% { transform: translateY(50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes toastFadeOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.9) translateY(-10px); }
+}
+
+/* Floating particle shapes on Screen 6 */
+.floating-heart, .floating-star {
+  position: fixed;
+  pointer-events: none;
+  z-index: 95;
+  animation: floatUp 4s linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVE STYLING)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.1rem;
+  }
+  .polaroid-table {
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .polaroid-card {
+    width: 175px;
+    padding: 10px 10px 18px 10px;
+  }
+  .polaroid-image-wrapper {
+    height: 145px;
+  }
+  .polaroid-caption {
+    font-size: 1.25rem;
+    margin-top: 10px;
+  }
+  .envelope-wrapper {
+    width: 300px;
+    height: 195px;
+  }
+  .envelope-recipient {
+    bottom: 20px;
+    left: 25px;
+  }
+  .envelope-recipient .recipient-name {
+    font-size: 0.95rem;
+  }
+  .receipt-paper {
+    width: 280px;
+    padding: 20px 14px;
+  }
+  .receipt-paper.open {
+    transform: translateY(-330px);
+  }
+  .celebration-title {
+    font-size: 1.75rem;
+  }
+  .celebration-card {
+    padding: 35px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 30px 20px;
+  }
+  .gift-title {
+    font-size: 1.8rem;
+  }
+  .polaroid-card {
+    width: 145px;
+    padding: 8px 8px 14px 8px;
+  }
+  .polaroid-image-wrapper {
+    height: 110px;
+  }
+  .polaroid-caption {
+    font-size: 1.1rem;
+    margin-top: 6px;
+  }
+  .receipt-paper.open {
+    transform: translateY(-350px);
+  }
+  .btn {
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+}
+
+/* ========================================================================== 
+   AJUSTES FINALES PETANCA: COQUETTE BLUE, FOTOS MÁS BONITAS, TICKET CORRECTO
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  align-items: flex-start;
+}
+
+#app-container {
+  min-height: 100vh;
+  align-items: flex-start;
+  padding: 34px 20px 70px;
+}
+
+.screen.active {
+  min-height: calc(100vh - 70px);
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+/* BOTONES: menos IA, más cuadraditos/coquette */
+.btn {
+  border-radius: 18px !important;
+  padding: 14px 26px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 1rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.2px;
+  box-shadow: 4px 4px 0 rgba(29, 53, 87, 0.18) !important;
+  border: 2px solid rgba(29, 53, 87, 0.18) !important;
+  transform: none;
+}
+
+.btn-primary,
+.btn-success {
+  background-color: #A2D2FF !important;
+  color: #1D3557 !important;
+  border-color: #1D3557 !important;
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+  background-color: #BDE0FE !important;
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 7px 7px 0 rgba(29, 53, 87, 0.22) !important;
+}
+
+.btn-primary:active,
+.btn-success:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0 rgba(29, 53, 87, 0.18) !important;
+}
+
+.btn-danger {
+  background-color: #EBF1F5 !important;
+  color: #1D3557 !important;
+  border-color: rgba(29, 53, 87, 0.25) !important;
+}
+
+.btn-danger:hover {
+  background-color: #DDEAF3 !important;
+}
+
+.btn-bounce,
+.btn-pulse {
+  animation: none !important;
+}
+
+/* FOTOS/POLAROID: más limpio, menos letra rara */
+#screen-memories {
+  max-width: 980px;
+}
+
+.memories-header {
+  margin-bottom: 26px;
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem) !important;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 1.05rem !important;
+  color: #4A5E73 !important;
+}
+
+.polaroid-table {
+  gap: 30px !important;
+  align-items: stretch !important;
+  margin: 18px 0 36px !important;
+}
+
+.polaroid-card {
+  width: 235px !important;
+  min-height: 365px;
+  padding: 14px 14px 18px !important;
+  border-radius: 18px !important;
+  background: #FFFFFF !important;
+  border: 2px solid rgba(29, 53, 87, 0.10) !important;
+  box-shadow: 8px 8px 0 rgba(162, 210, 255, 0.55), 0 16px 36px rgba(29, 53, 87, 0.10) !important;
+  transform: rotate(var(--rotation)) translateY(0) !important;
+}
+
+.polaroid-card::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 62px;
+  height: 22px;
+  background: rgba(255, 175, 204, 0.45);
+  border: 1px solid rgba(29, 53, 87, 0.08);
+  border-radius: 7px;
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.polaroid-card:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.035) !important;
+  box-shadow: 10px 10px 0 rgba(162, 210, 255, 0.65), 0 20px 42px rgba(29, 53, 87, 0.16) !important;
+}
+
+.polaroid-image-wrapper {
+  height: 165px !important;
+  border-radius: 14px !important;
+  border: 2px solid rgba(29, 53, 87, 0.08) !important;
+  background: #EBF1F5 !important;
+}
+
+.polaroid-caption {
+  font-family: var(--font-sans) !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #1D3557 !important;
+  line-height: 1.35 !important;
+  margin-top: 16px !important;
+  padding: 0 6px !important;
+}
+
+/* SOBRE + TICKET: que salga del sobre y que los botones no queden detrás */
+.letter-stage {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 540px !important;
+  min-height: 690px;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding-top: 70px;
+  overflow: visible !important;
+}
+
+.envelope-wrapper {
+  position: relative !important;
+  width: 340px !important;
+  height: 220px !important;
+  margin-bottom: 30px !important;
+  z-index: 30 !important;
+  overflow: visible !important;
+}
+
+.envelope-official {
+  overflow: visible !important;
+  border-radius: 16px !important;
+}
+
+.envelope-lid {
+  height: 80px !important;
+  background-color: #EEF6FF !important;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-bottom: none !important;
+  transform-origin: top center !important;
+  backface-visibility: hidden;
+}
+
+.envelope-wrapper.open .envelope-lid {
+  transform: rotateX(155deg) !important;
+}
+
+.envelope-wrapper.hidden {
+  opacity: 0 !important;
+  transform: translateY(25px) scale(0.92) !important;
+  height: 0 !important;
+  margin-bottom: 0 !important;
+  pointer-events: none !important;
+}
+
+.receipt-paper {
+  position: absolute !important;
+  top: 105px !important;
+  left: 50% !important;
+  width: 330px !important;
+  max-height: none !important;
+  overflow: visible !important;
+  background-color: #FAF9F6 !important;
+  opacity: 0;
+  z-index: 10 !important;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(55px) scale(0.88) !important;
+  transition: transform 1.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease, box-shadow 0.45s ease !important;
+  box-shadow: 0 10px 20px rgba(29, 53, 87, 0.10) !important;
+}
+
+.receipt-paper.open {
+  opacity: 1 !important;
+  z-index: 25 !important;
+  pointer-events: none !important;
+  transform: translateX(-50%) translateY(-275px) scale(1) !important;
+  box-shadow: 0 18px 45px rgba(29, 53, 87, 0.18) !important;
+}
+
+.receipt-paper.centered {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  opacity: 1 !important;
+  z-index: 15 !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  margin: 12px auto 28px !important;
+}
+
+.receipt-paper.centered + .terms-container,
+.terms-container.visible {
+  position: relative !important;
+  z-index: 40 !important;
+  opacity: 1 !important;
+  max-height: 450px !important;
+  margin-top: 4px !important;
+  overflow: visible !important;
+}
+
+.terms-warning {
+  background: #EEF6FF !important;
+  border: 2px solid rgba(29, 53, 87, 0.14) !important;
+  color: #1D3557 !important;
+  box-shadow: 4px 4px 0 rgba(162, 210, 255, 0.45);
+}
+
+.terms-buttons {
+  gap: 14px !important;
+}
+
+/* Mensaje de error centrado, tipo alerta de sistema cuqui */
+#toast-container {
+  position: fixed !important;
+  inset: 0 !important;
+  transform: none !important;
+  width: 100% !important;
+  max-width: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10000 !important;
+  pointer-events: none !important;
+  padding: 20px;
+}
+
+.toast.error-pop {
+  width: min(92vw, 420px) !important;
+  background: #FFFFFF !important;
+  color: #1D3557 !important;
+  border-radius: 22px !important;
+  border: 2px solid #1D3557 !important;
+  border-left: 2px solid #1D3557 !important;
+  padding: 22px 24px !important;
+  box-shadow: 8px 8px 0 rgba(162, 210, 255, 0.85), 0 18px 46px rgba(29, 53, 87, 0.20) !important;
+  display: flex !important;
+  gap: 16px !important;
+  align-items: center !important;
+  animation: errorBoing 0.55s cubic-bezier(.2, 1.6, .4, 1), errorExit 0.35s ease 2.45s forwards !important;
+}
+
+.error-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  background: #FFE8F0;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  animation: iconWobble 0.8s ease infinite alternate;
+}
+
+.error-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.error-text strong {
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.error-text span {
+  font-size: 0.92rem;
+  color: #4A5E73;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+@keyframes errorBoing {
+  0% { transform: scale(0.55) rotate(-7deg); opacity: 0; }
+  55% { transform: scale(1.06) rotate(2deg); opacity: 1; }
+  75% { transform: scale(0.97) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes errorExit {
+  to { transform: scale(0.85) translateY(18px); opacity: 0; }
+}
+
+@keyframes iconWobble {
+  from { transform: rotate(-6deg) scale(1); }
+  to { transform: rotate(6deg) scale(1.04); }
+}
+
+/* Responsive arreglado */
+@media (max-width: 768px) {
+  #app-container {
+    padding: 24px 14px 60px;
+  }
+
+  .polaroid-table {
+    gap: 22px !important;
+  }
+
+  .polaroid-card {
+    width: 210px !important;
+    min-height: 330px;
+  }
+
+  .polaroid-image-wrapper {
+    height: 145px !important;
+  }
+
+  .letter-stage {
+    min-height: 660px;
+    padding-top: 55px;
+  }
+
+  .receipt-paper,
+  .receipt-paper.centered {
+    width: min(330px, 88vw) !important;
+  }
+
+  .receipt-paper.open {
+    transform: translateX(-50%) translateY(-245px) scale(1) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .polaroid-table {
+    flex-direction: column;
+  }
+
+  .polaroid-card {
+    width: min(285px, 88vw) !important;
+    min-height: auto;
+    transform: rotate(0deg) !important;
+  }
+
+  .polaroid-image-wrapper {
+    height: 185px !important;
+  }
+
+  .envelope-wrapper {
+    width: 300px !important;
+    height: 195px !important;
+  }
+
+  .receipt-paper.open {
+    transform: translateX(-50%) translateY(-230px) scale(1) !important;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 390px;
+  }
+}

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Una Sorpresa Especial! 💙</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Una sorpresa especial y divertida de aniversario para Daniel. Renovación de suscripción de novia premium.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Google Fonts: Playfair Display (Headers), Outfit (UI & Buttons), Caveat (Handwritten polaroids) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style_updated.css">
+</head>
+
+<body>
+
+  <!-- Floating Hearts Background Container (for ambient animation) -->
+  <div id="ambient-container"></div>
+
+  <!-- Main Container to wrap the screens -->
+  <main id="app-container">
+
+    <!-- SCREEN 1: THE GIFT BOX -->
+    <section id="screen-gift" class="screen active">
+      <div class="glass-card central-card fade-in">
+        <h1 class="gift-title">Tengo una sorpresa para ti…</h1>
+
+        <div class="gift-container">
+          <div class="gift-box-3d" id="gift-box">
+            <!-- Bow & Ribbon -->
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+            <!-- Lid of the gift box -->
+            <div class="gift-lid">
+              <div class="gift-lid-ribbon-v"></div>
+              <div class="gift-lid-bow">
+                <div class="bow-left"></div>
+                <div class="bow-right"></div>
+              </div>
+            </div>
+            <!-- Body of the gift box -->
+            <div class="gift-body"></div>
+          </div>
+        </div>
+
+        <button id="btn-open-gift" class="btn btn-primary btn-bounce">
+          <span>🎁 Abrir regalo</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: POLAROID MEMORIES -->
+    <section id="screen-memories" class="screen">
+      <div class="memories-header">
+        <h1 class="section-title"> Mi ladrón de bravas favorito </h1>
+        <p class="subtitle"> Y por cierto, que bien cocinas </p>
+      </div>
+
+      <!-- Scattered Polaroid Grid -->
+      <div class="polaroid-table">
+        <!-- Polaroid 1 -->
+        <div class="polaroid-card p1" style="--rotation: -5deg;">
+          <div class="polaroid-image-wrapper">
+            <img src="assets/sunset.jpeg" alt="Atardecer juntos" class="polaroid-img">
+          </div>
+          <p class="polaroid-caption"> Por ser los primeros en la firma de libros de elementales</p>
+        </div>
+
+
+        <!-- Polaroid 2 -->
+        <div class="polaroid-card p2" style="--rotation: 4deg;">
+          <div class="polaroid-image-wrapper">
+            <img src="assets/cafe.jpeg" alt="Café y postres" class="polaroid-img">
+          </div>
+          <p class="polaroid-caption">Cada café sabe mejor si lo comparto contigo. </p>
+        </div>
+
+        <!-- Polaroid 3 -->
+        <div class="polaroid-card p3" style="--rotation: -3deg;">
+          <div class="polaroid-image-wrapper">
+            <img src="assets/stargazing.jpeg" alt="Bajo las estrellas" class="polaroid-img">
+          </div>
+          <p class="polaroid-caption"> Nos sabes lo feliz que me hace que los goblins ganaran esa apuesta. </p>
+        </div>
+      </div>
+
+      <div class="memories-footer">
+        <button id="btn-open-letter" class="btn btn-primary btn-bounce">
+          <span>💌 Abrir carta</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: ENVELOPE & RECEIPT (Combined for smooth animation transition) -->
+    <section id="screen-letter" class="screen">
+      <div class="letter-stage">
+
+        <!-- Envelope Container (Official Business Envelope Style) -->
+        <div class="envelope-wrapper" id="envelope-container">
+          <div class="envelope-official">
+            <!-- Official Stamp -->
+            <div class="envelope-stamp">
+              <div class="stamp-border">
+                <span class="stamp-text">CORREO</span>
+                <span class="stamp-text">OFICIAL</span>
+                <span class="stamp-date">15-06-2026</span>
+              </div>
+            </div>
+
+            <!-- Official Sender Details -->
+            <div class="envelope-sender">
+              <strong>BOYFRIEND SERVICES S.L.</strong>
+              <span>Dpto. de Mimos & Renovaciones</span>
+              <span>Madrid, España</span>
+            </div>
+
+            <!-- Recipient Window/Box -->
+            <div class="envelope-recipient">
+              <span class="recipient-label">DESTINATARIO:</span>
+              <strong class="recipient-name">Daniel Labrada</strong>
+              <span class="recipient-desc">Cliente Premium de Novia™</span>
+            </div>
+
+            <!-- Official Seal Badge -->
+            <div class="envelope-seal">
+              <svg viewBox="0 0 24 24" class="seal-svg">
+                <path
+                  d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 6c1.66 0 3 1.34 3 3 0 1.66-1.34 3-3 3s-3-1.34-3-3c0-1.66 1.34-3 3-3zm0 12c-2.7 0-5.8 1.28-6 2v1h12v-1c-.2-.72-3.3-2-6-2z"
+                  fill="#0052FF" />
+              </svg>
+            </div>
+
+            <!-- Envelope Lid (Flap that opens up) -->
+            <div class="envelope-lid"></div>
+          </div>
+
+          <div class="envelope-prompt" id="envelope-prompt">
+            👆 Pulsa el sobre oficial para abrir
+          </div>
+        </div>
+
+        <!-- The document/receipt inside (Positioned outside envelope in DOM for transition flow) -->
+        <div class="receipt-paper" id="receipt-paper">
+          <div class="receipt-cutout-top"></div>
+
+          <div class="receipt-content">
+            <div class="receipt-header">
+              <div class="receipt-divider">━━━━━━━━━━━━━━━━━━━━━━</div>
+              <h2 class="receipt-title">BOYFRIEND SERVICES S.L.</h2>
+              <div class="receipt-divider">━━━━━━━━━━━━━━━━━━━━━━</div>
+            </div>
+
+            <div class="receipt-details">
+              <div class="detail-row">
+                <span class="detail-label">Cliente:</span>
+                <span class="detail-value highlight">Daniel Labrada</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Producto:</span>
+                <span class="detail-value">NOVIA PREMIUM™</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Periodo de prueba:</span>
+                <span class="detail-value">1 mes</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Estado:</span>
+                <span class="detail-value status-badge">SUPERADO CON ÉXITO ✅</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Renovación:</span>
+                <span class="detail-value">AUTOMÁTICA</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Duración del contrato:</span>
+                <span class="detail-value">INDEFINIDA</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Método de pago:</span>
+                <span class="detail-value">Besos, abrazos y mimos</span>
+              </div>
+
+              <div class="receipt-section-title">Cuota mensual:</div>
+              <div class="quote-box">
+                Una cita romántica
+              </div>
+
+              <div class="receipt-section-title">Recargos:</div>
+              <ul class="receipt-list charges-list">
+                <li><span class="charge-item">+5€</span><span class="charge-text">por despertarme</span></li>
+                <li><span class="charge-item">+30€</span><span class="charge-text">por llamarme por mi nombre</span>
+                </li>
+                <li><span class="charge-item">+12€</span><span class="charge-text">por crear una necesidad constante de
+                    mimos</span></li>
+              </ul>
+
+              <div class="receipt-section-title">Beneficios incluidos:</div>
+              <ul class="receipt-list benefits-list">
+                <li>✓ Apoyo emocional 24/7</li>
+                <li>✓ Memes malos ilimitados</li>
+                <li>✓ Fotos de perros gratis</li>
+                <li>✓ Abrazos bajo demanda</li>
+              </ul>
+
+              <div class="detail-row margin-top">
+                <span class="detail-label text-bold">Cancelación:</span>
+                <span class="detail-value highlight-red">NO DISPONIBLE</span>
+              </div>
+            </div>
+
+            <div class="receipt-divider">━━━━━━━━━━━━━━━━━━━━━━</div>
+
+            <!-- Barcode for authentic ticket look -->
+            <div class="barcode-container">
+              <div class="barcode"></div>
+              <div class="barcode-number">01-06-2026-LOVE-DANIEL</div>
+            </div>
+          </div>
+
+          <div class="receipt-cutout-bottom"></div>
+        </div>
+
+        <!-- Terms and conditions container (Hidden initially, appears after receipt rolls out) -->
+        <div class="terms-container" id="terms-container">
+          <p class="terms-warning">
+            ⚠️ Al continuar aceptas permanecer enamorado indefinidamente.
+          </p>
+          <div class="terms-buttons">
+            <button id="btn-accept" class="btn btn-success btn-pulse">
+              <span>💙 Aceptar términos y condiciones</span>
+            </button>
+            <button id="btn-decline" class="btn btn-danger">
+              <span>❌ No aceptar</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SCREEN 4: CELEBRATION (FINAL SCREEN) -->
+    <section id="screen-celebration" class="screen">
+      <div class="glass-card celebration-card fade-in">
+        <div class="success-icon-container">
+          <div class="success-circle">
+            <svg viewBox="0 0 24 24" class="check-svg">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="none" stroke="#FAF9F6" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+
+        <h1 class="celebration-title">💙 SUSCRIPCIÓN RENOVADA CORRECTAMENTE 💙</h1>
+
+        <div class="celebration-message">
+          <p>Te elegiré una y mil veces más. </p>
+        </div>
+
+        <!-- Cute additional interactive elements -->
+        <div class="love-counter">
+          <span class="counter-label">Días soportándote:</span>
+          <span class="counter-val" id="days-counter">2025-07-16</span>
+        </div>
+
+        <button id="btn-restart" class="btn btn-secondary">
+          <span>🔄 Volver a empezar</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Custom Toast Notification Container (for declination errors) -->
+  <div id="toast-container"></div>
+
+  <!-- Custom Confetti & Canvas for animations -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Custom Javascript -->
+  <script src="script_updated.js"></script>
+</body>
+
+</html>
